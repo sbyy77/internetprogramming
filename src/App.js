@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ContextProvider from "./components/common/context/context";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MogPost from "./pages/mogPost";
+import MogMain from "./pages/mogMain";
+import MogPublish from "./pages/mogPublish";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <ContextProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/main" element={<MogMain />} />
+                        <Route path="/post" element={<MogPost />} />
+                        <Route path="/publish" element={<MogPublish />} />
+                    </Routes>
+                </BrowserRouter>
+            </ContextProvider>
+        </>
+    );
 }
 
 export default App;
